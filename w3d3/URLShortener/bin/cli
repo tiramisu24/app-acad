@@ -1,0 +1,22 @@
+require 'launchy'
+
+
+puts "What's your email?"
+email = gets.chomp
+user = User.find_by(email: email)
+puts "Enter 1 if you want to visit a short url, or enter 2 if you want to create one"
+url = nil
+case gets.chomp.to_i
+when 1
+  puts "What short url do you want to visit. Here are your options"
+  puts ShortenedUrl.all.pluck(:short_url)
+  url = ShortenedUrl.find_by_short_url(gets.chomp)
+
+  Visit.record_visit!(user, url)
+  Launchy.open(url.long_url)
+when 2
+  puts "Enter the url you want to shorten"
+  long_url = gets.chomp
+  puts "Here is the so simple short url you requested"
+  puts ShortenedUrl.shorten(user, long_url).short_url
+end

@@ -1,0 +1,32 @@
+body, header, ul, article, h1{
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  background: inherit;
+
+  margin: 0;
+  padding: 0;
+}
+
+.Tab{
+  width: 50%;
+}
+
+.Tab > ul{
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid grey;
+}
+
+.Tab > ul > h1 {
+  border: 1px solid grey;
+  border-radius: 5px;
+  border-bottom: none;
+  background-color: #789db4;
+}
+
+.Tab > article {
+  height: 100px;
+  background-color: cornflowerblue;
+  border: 2px solid grey;
+}
